@@ -3,591 +3,278 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Call Agent: The Student Consultant Advantage</title>
+    <title>Magmat | Innovative AI Solutions</title>
 
     <script src="https://cdn.tailwindcss.com/"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0fdfa; /* Light Cyan tint */
+            background-color: #f8fafc;
             color: #1e293b;
+            scroll-behavior: smooth;
         }
 
-        /* CHART CONTAINER STYLING RULES */
         .chart-container {
             position: relative;
             width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-            /* Base height for mobile */
+            margin: auto;
             height: 300px;
             max-height: 400px;
-            /* Explicit max-width to prevent stretching on huge screens */
             max-width: 600px;
         }
 
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-            }
-        }
+        @media (min-width: 768px) { .chart-container { height: 350px; } }
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #06b6d4;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #0891b2;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #06b6d4; border-radius: 4px; }
 
-        /* CSS Diagrams (No SVG) */
         .step-circle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: white;
-            position: relative;
-            z-index: 10;
-        }
-        .step-line {
-            flex-grow: 1;
-            height: 4px;
-            background-color: #e2e8f0;
-            margin-top: 20px;
-            margin-left: -10px;
-            margin-right: -10px;
-            z-index: 0;
-        }
-        .step-line.active {
-            background-color: #06b6d4;
+            width: 40px; height: 40px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; color: white; position: relative; z-index: 10;
         }
     </style>
 </head>
-<body class="bg-slate-50">
+<body>
 
-    <header class="bg-gradient-to-r from-blue-900 via-blue-800 to-cyan-600 text-white p-8 md:p-16 shadow-lg">
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-            <div class="md:col-span-2">
-                <span class="inline-block py-1 px-3 rounded-full bg-amber-500 text-blue-900 text-sm font-bold mb-4">STUDENT CONSULTANT ADVANTAGE</span>
-                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">Democratizing AI Automation</h1>
-                <p class="text-lg md:text-xl text-blue-100 mb-6 max-w-2xl">
-                    Breaking the "Overpriced & Oversaturated" agency model. Enterprise-grade AI Call Agents capable of inbound and outbound communication—at a fraction of the cost, and with **unmatched staffing resilience** (no sick days or personal inconveniences).
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <div class="bg-white/10 backdrop-blur-md p-3 rounded-lg border border-white/20">
-                        <span class="block text-2xl font-bold text-amber-400">24/7</span>
-                        <span class="text-xs uppercase tracking-wider">Availability</span>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-md p-3 rounded-lg border border-white/20">
-                        <span class="block text-2xl font-bold text-cyan-300">57%</span>
-                        <span class="text-xs uppercase tracking-wider">Cost Savings</span>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-md p-3 rounded-lg border border-white/20">
-                        <span class="block text-2xl font-bold text-emerald-300">Resilience</span>
-                        <span class="text-xs uppercase tracking-wider">Never Calls Out Sick</span>
-                    </div>
-                </div>
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-800 tracking-tighter text-blue-900">MAGMAT<span class="text-cyan-500">.XYZ</span></div>
+            <div class="hidden md:flex space-x-8 font-semibold text-slate-600">
+                <a href="#home" class="hover:text-blue-600 transition">Home</a>
+                <a href="#services" class="hover:text-blue-600 transition border-b-2 border-cyan-500 text-blue-900">Services</a>
+                <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
             </div>
-            <div class="hidden md:block bg-white/5 rounded-xl p-6 backdrop-blur-sm border border-white/10">
-                <h3 class="font-bold text-lg mb-2">The Mission</h3>
-                <p class="text-sm leading-relaxed opacity-90">
-                    "I am a student consultant committed to dismantling the overpriced market. My goal is to use technical expertise to help your business implement customized AI agents without the corporate markup."
-                </p>
+            <a href="tel:+27609069958" class="bg-blue-900 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-blue-800 transition">Call Now</a>
+        </div>
+    </nav>
+
+    <header id="home" class="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white py-20 md:py-32 px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">Future-Proofing Your <span class="text-cyan-400">Workflow.</span></h1>
+            <p class="text-xl text-slate-300 mb-10 leading-relaxed">
+                Magmat provides elite technical consultancy and automated systems designed to eliminate overhead and maximize efficiency for modern businesses.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#services" class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold py-4 px-10 rounded-xl transition shadow-lg">Explore Services</a>
+                <a href="#contact" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 py-4 px-10 rounded-xl font-bold transition">Get a Quote</a>
             </div>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto p-4 md:p-8 space-y-12">
+    <main class="max-w-6xl mx-auto p-4 md:p-8 space-y-24">
 
-        <section>
-            <div class="mb-6 border-l-4 border-amber-500 pl-4">
-                <h2 class="text-3xl font-bold text-slate-800">The Cost Disruption & HR Advantage</h2>
-                <p class="text-slate-600 mt-2">Why pay for corporate overhead and HR hassle? Partnering with a student consultant focuses your budget on technology and results, not agency margins or employment costs.</p>
+        <section id="services" class="pt-12">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold text-slate-900 mb-4">Our Services</h2>
+                <p class="text-slate-500 max-w-2xl mx-auto text-lg">Specialized technical solutions tailored for student-led budgets and enterprise-level results.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-600">
-                    <h3 class="text-xl font-bold mb-2 text-gray-800">Year 1 Total Cost of Ownership (Employee vs. Agent)</h3>
-                    <p class="text-sm text-gray-500 mb-6">Comparing a Traditional Employee/Agency model vs. the efficient AI Call Agent/Consultant model. **Eliminate hiring and turnover costs.**</p>
-
-                    <div class="chart-container">
-                        <canvas id="costComparisonChart"></canvas>
-                    </div>
-
-                    <div class="mt-4 bg-blue-50 p-4 rounded-lg">
-                        <p class="text-sm text-blue-800 font-semibold text-center">
-                            Result: ~$7,000 kept in your pocket annually compared to agency pricing.
-                        </p>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-3xl shadow-xl border-2 border-cyan-500 relative transform hover:-translate-y-2 transition duration-300">
+                    <div class="absolute -top-4 left-6 bg-cyan-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Most Popular</div>
+                    <div class="w-14 h-14 bg-cyan-100 rounded-2xl flex items-center justify-center text-3xl mb-6">🤖</div>
+                    <h3 class="text-2xl font-bold mb-3">AI Call Agent</h3>
+                    <p class="text-slate-600 mb-6 text-sm">Automate inbound and outbound calls with 24/7 resilience and unmatched cost savings.</p>
+                    <a href="#ai-agent-details" class="text-cyan-600 font-bold flex items-center gap-2 hover:gap-4 transition-all">
+                        View Details <span>→</span>
+                    </a>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-cyan-500">
-                    <h3 class="text-xl font-bold mb-2 text-gray-800">Efficiency Breakdown</h3>
-                    <p class="text-sm text-gray-500 mb-6">Visualizing the 57% efficiency gain by removing administrative bloat and paying only for core technology and consulting support.</p>
+                <div class="bg-white p-8 rounded-3xl shadow-md border border-slate-100 transform hover:-translate-y-2 transition duration-300">
+                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-3xl mb-6">🌐</div>
+                    <h3 class="text-2xl font-bold mb-3">Custom Web Apps</h3>
+                    <p class="text-slate-600 mb-6 text-sm">High-performance internal tools and client-facing dashboards built with modern stacks.</p>
+                    <span class="text-slate-400 font-medium italic">Available Soon</span>
+                </div>
 
-                    <div class="chart-container">
-                        <canvas id="savingsDonutChart"></canvas>
-                    </div>
-
-                    <div class="mt-4 grid grid-cols-2 gap-4 text-center">
-                        <div>
-                            <span class="block text-2xl font-bold text-slate-800">4 Days</span>
-                            <span class="text-xs text-gray-500">Speed to Deployment</span>
-                        </div>
-                        <div>
-                            <span class="block text-2xl font-bold text-slate-800">$125</span>
-                            <span class="text-xs text-gray-500">Fixed Monthly Retainer</span>
-                        </div>
-                    </div>
+                <div class="bg-white p-8 rounded-3xl shadow-md border border-slate-100 transform hover:-translate-y-2 transition duration-300">
+                    <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center text-3xl mb-6">⚡</div>
+                    <h3 class="text-2xl font-bold mb-3">Workflow Automation</h3>
+                    <p class="text-slate-600 mb-6 text-sm">Connect your apps and automate repetitive tasks using n8n and custom Python scripts.</p>
+                    <span class="text-slate-400 font-medium italic">Available Soon</span>
                 </div>
             </div>
         </section>
 
-        <section class="text-center">
-            <button id="showPricingButton" class="bg-amber-500 hover:bg-amber-600 text-blue-900 font-bold py-3 px-10 rounded-full transition duration-300 shadow-lg text-lg">
-                View Detailed Pricing
-            </button>
-
-            <div id="pricingDetails" class="mt-8 hidden bg-white rounded-xl shadow-2xl p-6 border-t-4 border-blue-600 max-w-2xl mx-auto">
-                <h3 class="text-2xl font-bold mb-6 text-slate-800">Standard Pricing Model</h3>
-                <p class="text-md text-gray-600 mb-6">Our model is simple, transparent, and built for maximum return on investment.</p>
-
-                <div class="border-2 border-cyan-500 p-6 rounded-xl bg-cyan-50">
-                    <h4 class="text-xl font-extrabold text-cyan-800 mb-2">Standard Implementation</h4>
-                    <div class="flex flex-col items-center">
-                        <div class="p-4 bg-white rounded-lg shadow mb-4 w-full">
-                            <p class="text-3xl font-bold text-slate-800">$869</p>
-                            <span class="text-sm font-normal text-gray-600">One-Time Setup Fee</span>
-                        </div>
-                        <span class="text-2xl font-bold text-slate-800 mb-2">+</span>
-                        <div class="p-4 bg-white rounded-lg shadow w-full">
-                            <p class="text-3xl font-bold text-slate-800">$125</p>
-                            <span class="text-sm font-normal text-gray-600">Monthly Retainer for Support</span>
-                        </div>
-                    </div>
-                    <ul class="text-left space-y-2 text-sm text-slate-700 mt-6 pt-4 border-t border-cyan-200">
-                        <li>✅ Full-Service Implementation & Custom Scripting.</li>
-                        <li>✅ Dedicated Consulting Support & Maintenance.</li>
-                        <li>✅ Includes Usage/Call Minutes (billed separately at competitive rates).</li>
-                        <li>✅ Best Value for Established Operations.</li>
-                    </ul>
+        <div id="ai-agent-details" class="scroll-mt-24 space-y-16">
+            
+            <section class="bg-blue-50 rounded-[3rem] p-8 md:p-16">
+                <div class="max-w-4xl mx-auto text-center mb-12">
+                    <span class="text-cyan-600 font-bold tracking-widest uppercase text-sm">Service Spotlight</span>
+                    <h2 class="text-4xl md:text-5xl font-extrabold mt-4 mb-6">AI Call Agent: The Student Consultant Advantage</h2>
+                    <p class="text-lg text-slate-600">Enterprise-grade AI communication—at a fraction of the cost, with no sick days or HR overhead.</p>
                 </div>
-            </div>
-        </section>
 
-
-        <section>
-            <div class="mb-6 border-l-4 border-cyan-500 pl-4">
-                <h2 class="text-3xl font-bold text-slate-800">Dual-Channel Capability & Effortless Scaling</h2>
-                <p class="text-slate-600 mt-2">This agent handles complex Inbound Support and Proactive Outbound Sales simultaneously. **Add hundreds of callers instantly without ever searching for a candidate.**</p>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                    <div class="md:col-span-1 space-y-6">
-                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
-                            <h4 class="font-bold text-blue-900 mb-1">Real Estate</h4>
-                            <p class="text-sm text-slate-600">Outbound lead qualification + Inbound inquiry handling.</p>
-                        </div>
-                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
-                            <h4 class="font-bold text-blue-900 mb-1">E-Commerce</h4>
-                            <p class="text-sm text-slate-600">Cart abandonment calls + 24/7 Order support.</p>
-                        </div>
-                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
-                            <h4 class="font-bold text-blue-900 mb-1">Healthcare</h4>
-                            <p class="text-sm text-slate-600">Appointment reminders + Patient follow-ups.</p>
-                        </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-3xl shadow-sm p-8 border border-blue-100">
+                        <h3 class="text-xl font-bold mb-2">Year 1 Total Cost of Ownership</h3>
+                        <p class="text-sm text-gray-500 mb-6">Eliminate hiring and turnover costs.</p>
+                        <div class="chart-container"><canvas id="costComparisonChart"></canvas></div>
                     </div>
 
+                    <div class="bg-white rounded-3xl shadow-sm p-8 border border-blue-100">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">Efficiency Breakdown</h3>
+                        <p class="text-sm text-gray-500 mb-6">57% gain by removing administrative bloat.</p>
+                        <div class="chart-container"><canvas id="savingsDonutChart"></canvas></div>
+                    </div>
+                </div>
+
+                <div class="mt-12 text-center">
+                    <button id="showPricingButton" class="bg-amber-500 hover:bg-amber-600 text-blue-900 font-bold py-3 px-10 rounded-full transition shadow-lg">
+                        View Detailed Pricing
+                    </button>
+                    <div id="pricingDetails" class="mt-8 hidden bg-white rounded-2xl shadow-xl p-8 border-t-4 border-blue-600 max-w-xl mx-auto">
+                        <h4 class="text-2xl font-bold mb-4">Standard Pricing Model</h4>
+                        <div class="border-2 border-cyan-500 p-6 rounded-xl bg-cyan-50">
+                            <p class="text-3xl font-bold text-slate-800">$869 <span class="text-sm font-normal">Setup</span> + $125 <span class="text-sm font-normal">Monthly</span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="mb-10 border-l-4 border-cyan-500 pl-6">
+                    <h3 class="text-3xl font-bold">Dual-Channel & Scaling</h3>
+                    <p class="text-slate-600 mt-2">Handle complex Inbound and Outbound simultaneously.</p>
+                </div>
+                <div class="bg-white rounded-3xl shadow-lg p-8 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                    <div class="space-y-4">
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-100 font-bold text-blue-900 text-center">Real Estate</div>
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-100 font-bold text-blue-900 text-center">E-Commerce</div>
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-100 font-bold text-blue-900 text-center">Healthcare</div>
+                    </div>
                     <div class="md:col-span-2">
-                        <div class="chart-container" style="max-width: 500px;">
-                            <canvas id="capabilityRadarChart"></canvas>
-                        </div>
-                        <p class="text-center text-xs text-gray-400 mt-2 italic">Performance scoring across critical business functions, emphasizing inherent scalability.</p>
+                        <div class="chart-container"><canvas id="capabilityRadarChart"></canvas></div>
                     </div>
                 </div>
+            </section>
+
+            <section class="bg-slate-900 rounded-[3rem] p-10 text-white">
+                <h3 class="text-3xl font-bold text-center mb-12">From Concept to Live in 4 Days</h3>
+                <div class="flex flex-col md:flex-row justify-between items-center gap-8 max-w-4xl mx-auto">
+                    <div class="text-center group"><div class="step-circle mx-auto bg-amber-500 mb-4">1</div><p class="font-bold text-amber-400">Discovery</p></div>
+                    <div class="text-center group"><div class="step-circle mx-auto bg-cyan-600 mb-4">2</div><p class="font-bold text-cyan-400">Build</p></div>
+                    <div class="text-center group"><div class="step-circle mx-auto bg-blue-600 mb-4">3</div><p class="font-bold text-blue-400">Testing</p></div>
+                    <div class="text-center group"><div class="step-circle mx-auto bg-green-500 mb-4">4</div><p class="font-bold text-green-400">Launch</p></div>
+                </div>
+            </section>
+
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-3xl shadow-md p-8 border border-slate-100">
+                    <h3 class="text-xl font-bold mb-6">Privacy-First Architecture</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4"><div class="w-10 h-10 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold">I</div><p class="text-sm font-semibold">Gemini LLM Interaction</p></div>
+                        <div class="flex items-center gap-4"><div class="w-10 h-10 bg-amber-500 text-white rounded-lg flex items-center justify-center font-bold">E</div><p class="text-sm font-semibold">Encrypted Handoff</p></div>
+                        <div class="flex items-center gap-4"><div class="w-10 h-10 bg-green-500 text-white rounded-lg flex items-center justify-center font-bold">D</div><p class="text-sm font-semibold">Your Secure CRM</p></div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-3xl shadow-md p-8 border border-slate-100">
+                    <h3 class="text-xl font-bold mb-2">Platform Reliability</h3>
+                    <div id="reliabilityGauge" style="height: 250px;"></div>
+                </div>
+            </section>
+        </div>
+
+        <footer id="contact" class="bg-blue-900 text-white rounded-[3rem] p-12 text-center shadow-2xl">
+            <h2 class="text-4xl font-bold mb-6">Let's Build Something Smarter</h2>
+            <p class="text-blue-200 mb-10 max-w-xl mx-auto">Get in touch to discuss your implementation or explore other automation services.</p>
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <a href="mailto:info@magmat.xyz" class="bg-amber-500 text-blue-900 font-bold py-4 px-10 rounded-full hover:bg-amber-600 transition">info@magmat.xyz</a>
+                <a href="tel:+27609069958" class="bg-transparent border-2 border-cyan-400 text-cyan-400 font-bold py-4 px-10 rounded-full hover:bg-cyan-400 hover:text-blue-900 transition">+27 60 906 9958</a>
             </div>
-        </section>
-
-        <section>
-            <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl shadow-xl p-8 text-white">
-                <div class="text-center mb-10">
-                    <h2 class="text-3xl font-bold mb-2">From Concept to Live in 4 Days</h2>
-                    <p class="text-slate-400">Rapid implementation without the bureaucratic wait times.</p>
-                </div>
-
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center relative max-w-4xl mx-auto">
-
-                    <div class="flex flex-row md:flex-col items-center md:text-center w-full md:w-1/4 mb-6 md:mb-0 group">
-                        <div class="step-circle bg-amber-500 text-slate-900 text-lg shadow-[0_0_15px_rgba(245,158,11,0.5)]">1</div>
-                        <div class="ml-4 md:ml-0 md:mt-4">
-                            <h4 class="font-bold text-lg text-amber-400">Discovery</h4>
-                            <p class="text-xs text-slate-300 mt-1">Map flows & outcomes.</p>
-                        </div>
-                    </div>
-
-                    <div class="hidden md:block h-1 bg-slate-600 flex-grow mx-2 rounded"></div>
-
-                    <div class="flex flex-row md:flex-col items-center md:text-center w-full md:w-1/4 mb-6 md:mb-0">
-                        <div class="step-circle bg-cyan-600 text-white text-lg">2</div>
-                        <div class="ml-4 md:ml-0 md:mt-4">
-                            <h4 class="font-bold text-lg text-cyan-400">Build</h4>
-                            <p class="text-xs text-slate-300 mt-1">Scripting & CPaaS setup.</p>
-                        </div>
-                    </div>
-
-                    <div class="hidden md:block h-1 bg-slate-600 flex-grow mx-2 rounded"></div>
-
-                    <div class="flex flex-row md:flex-col items-center md:text-center w-full md:w-1/4 mb-6 md:mb-0">
-                        <div class="step-circle bg-blue-600 text-white text-lg">3</div>
-                        <div class="ml-4 md:ml-0 md:mt-4">
-                            <h4 class="font-bold text-lg text-blue-400">Testing</h4>
-                            <p class="text-xs text-slate-300 mt-1">Stress tests & tone refinement.</p>
-                        </div>
-                    </div>
-
-                    <div class="hidden md:block h-1 bg-slate-600 flex-grow mx-2 rounded"></div>
-
-                    <div class="flex flex-row md:flex-col items-center md:text-center w-full md:w-1/4">
-                        <div class="step-circle bg-green-500 text-white text-lg shadow-[0_0_15px_rgba(34,197,94,0.5)]">4</div>
-                        <div class="ml-4 md:ml-0 md:mt-4">
-                            <h4 class="font-bold text-lg text-green-400">Launch</h4>
-                            <p class="text-xs text-slate-300 mt-1">Go-live & handover.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <h3 class="text-xl font-bold mb-4 text-gray-800">Privacy-First Architecture</h3>
-                <p class="text-sm text-gray-500 mb-6">A unique approach that ensures sensitive data is never stored on intermediate automation servers.</p>
-
-                <div class="space-y-4">
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-2xl text-blue-800 font-bold">I</div>
-                        <div class="ml-4 flex-1 p-3 border border-blue-100 rounded bg-blue-50">
-                            <span class="font-bold text-blue-900 text-sm">Interaction</span>
-                            <div class="text-xs text-blue-700">CPaaS + Google Gemini LLM</div>
-                        </div>
-                    </div>
-                    <div class="flex justify-center text-gray-300 text-xl">▼</div>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center text-2xl text-amber-800 font-bold">E</div>
-                        <div class="ml-4 flex-1 p-3 border border-amber-100 rounded bg-amber-50">
-                            <span class="font-bold text-amber-900 text-sm">Encryption Handoff</span>
-                            <div class="text-xs text-amber-700">Temporary Privacy Email System</div>
-                        </div>
-                    </div>
-                    <div class="flex justify-center text-gray-300 text-xl">▼</div>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-2xl text-green-800 font-bold">D</div>
-                        <div class="ml-4 flex-1 p-3 border border-green-100 rounded bg-green-50">
-                            <span class="font-bold text-green-900 text-sm">Your Secure CRM</span>
-                            <div class="text-xs text-green-700">Final Data Destination</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-md p-6 flex flex-col">
-                <h3 class="text-xl font-bold mb-2 text-gray-800">Platform Uptime & Reliability</h3>
-                <p class="text-sm text-gray-500 mb-4">Built on industry-leading CPaaS infrastructure.</p>
-                <div class="chart-container flex-grow">
-                    <div id="reliabilityGauge" style="width:100%; height:100%;"></div>
-                </div>
-                <div class="mt-2 text-center text-xs text-gray-400">
-                    Security compliant with GDPR & HIPAA readiness standards.
-                </div>
-            </div>
-        </section>
-
-        <footer class="bg-blue-900 text-white rounded-xl p-8 md:p-12 text-center shadow-2xl mt-8 mb-8">
-            <h2 class="text-3xl font-bold mb-4">Ready to Implement an Agent?</h2>
-            <p class="text-blue-200 mb-8 max-w-2xl mx-auto">
-                Secure your implementation slot today. Get in touch via call or email—whichever is most comfortable for you—to start seeing your savings and **end staffing inconvenience.**
-            </p>
-            <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="mailto:info@magmat.xyz" class="bg-amber-500 hover:bg-amber-600 text-blue-900 font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg block w-full md:w-auto text-center">
-                    Email: info@magmat.xyz
-                </a>
-                <a href="tel:+27609069958" class="bg-transparent border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-blue-900 font-bold py-3 px-8 rounded-full transition duration-300 block w-full md:w-auto text-center">
-                    Call: +27 609069958
-                </a>
-            </div>
-            <p class="mt-8 text-xs text-blue-400">© 2024 AI Call Agent Student Consultancy. All rights reserved.</p>
+            <p class="mt-12 text-blue-400 text-xs tracking-widest uppercase">© 2026 MAGMAT TECHNICAL CONSULTANCY</p>
         </footer>
 
     </main>
 
     <script>
-        // ---------------------------------------------------------
-        // UTILITY: Label Wrapping Logic (Max 16 chars per line)
-        // ---------------------------------------------------------
+        // Existing Chart Initialization (Kept same logic)
         function wrapLabel(str, maxLen = 16) {
             if (str.length <= maxLen) return str;
             const words = str.split(' ');
-            const lines = [];
-            let currentLine = words[0];
-
+            const lines = []; let currentLine = words[0];
             for (let i = 1; i < words.length; i++) {
-                if (currentLine.length + 1 + words[i].length <= maxLen) {
-                    currentLine += ' ' + words[i];
-                } else {
-                    lines.push(currentLine);
-                    currentLine = words[i];
-                }
+                if (currentLine.length + 1 + words[i].length <= maxLen) { currentLine += ' ' + words[i]; }
+                else { lines.push(currentLine); currentLine = words[i]; }
             }
-            lines.push(currentLine);
-            return lines;
+            lines.push(currentLine); return lines;
         }
 
-        // ---------------------------------------------------------
-        // GLOBAL CHART DEFAULTS
-        // ---------------------------------------------------------
         Chart.defaults.font.family = "'Inter', sans-serif";
-        Chart.defaults.color = '#64748b';
-        Chart.defaults.scale.grid.color = '#e2e8f0';
-
-        // Specific Tooltip configuration for wrapped labels
         const commonPlugins = {
-            legend: {
-                position: 'bottom',
-                labels: { usePointStyle: true, boxWidth: 8 }
-            },
-            tooltip: {
-                backgroundColor: 'rgba(30, 58, 138, 0.9)', // Blue-900
-                padding: 12,
-                callbacks: {
-                    title: function(tooltipItems) {
-                        const item = tooltipItems[0];
-                        let label = item.chart.data.labels[item.dataIndex];
-                        if (Array.isArray(label)) {
-                            return label.join(' ');
-                        } else {
-                            return label;
-                        }
-                    }
-                }
-            }
+            legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 8 } },
+            tooltip: { backgroundColor: 'rgba(30, 58, 138, 0.9)', padding: 12 }
         };
 
-        // ---------------------------------------------------------
-        // CHART 1: COST COMPARISON (Bar Chart)
-        // ---------------------------------------------------------
-        const costCtx = document.getElementById('costComparisonChart').getContext('2d');
-        new Chart(costCtx, {
+        // CHART 1: Cost
+        new Chart(document.getElementById('costComparisonChart').getContext('2d'), {
             type: 'bar',
             data: {
-                labels: [wrapLabel('Traditional Employee/Agency Cost'), wrapLabel('AI Agent/Consultant Cost')],
+                labels: [wrapLabel('Agency Cost'), wrapLabel('Magmat AI Cost')],
                 datasets: [{
-                    label: 'Total Year 1 Cost ($)',
-                    data: [12000, 5000], // Data kept for visual comparison, text updated for context.
-                    backgroundColor: [
-                        'rgba(239, 68, 68, 0.7)', // Red for high cost
-                        'rgba(6, 182, 212, 0.8)'  // Cyan for student cost
-                    ],
-                    borderColor: [
-                        'rgba(239, 68, 68, 1)',
-                        'rgba(6, 182, 212, 1)'
-                    ],
-                    borderWidth: 1,
-                    borderRadius: 6
+                    data: [12000, 5000],
+                    backgroundColor: ['rgba(239, 68, 68, 0.7)', 'rgba(6, 182, 212, 0.8)'],
+                    borderRadius: 8
                 }]
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: commonPlugins,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            callback: function(value) { return '$' + value; }
-                        }
-                    }
-                }
-            }
+            options: { responsive: true, maintainAspectRatio: false, plugins: commonPlugins }
         });
 
-        // ---------------------------------------------------------
-        // CHART 2: SAVINGS BREAKDOWN (Doughnut)
-        // ---------------------------------------------------------
-        const savingsCtx = document.getElementById('savingsDonutChart').getContext('2d');
-        new Chart(savingsCtx, {
+        // CHART 2: Savings
+        new Chart(document.getElementById('savingsDonutChart').getContext('2d'), {
             type: 'doughnut',
             data: {
-                labels: ['Savings Reinvested', 'Service Cost'],
-                datasets: [{
-                    data: [57, 43],
-                    backgroundColor: [
-                        '#f59e0b', // Amber (Savings/Gold)
-                        '#e2e8f0'  // Slate (Cost)
-                    ],
-                    borderWidth: 0,
-                    hoverOffset: 4
-                }]
+                labels: ['Saved', 'Cost'],
+                datasets: [{ data: [57, 43], backgroundColor: ['#f59e0b', '#e2e8f0'], borderWidth: 0 }]
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                cutout: '70%',
-                plugins: {
-                    ...commonPlugins,
-                    legend: { display: true, position: 'bottom' },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                return context.label + ': ' + context.parsed + '%';
-                            }
-                        }
-                    }
-                }
-            },
-            plugins: [{
-                id: 'textCenter',
-                beforeDraw: function(chart) {
-                    var width = chart.width, height = chart.height, ctx = chart.ctx;
-                    ctx.restore();
-                    var fontSize = (height / 114).toFixed(2);
-                    ctx.font = "bold " + fontSize + "em sans-serif";
-                    ctx.textBaseline = "middle";
-                    ctx.fillStyle = "#1e293b";
-                    var text = "57%",
-                        textX = Math.round((width - ctx.measureText(text).width) / 2),
-                        textY = height / 2;
-                    ctx.fillText(text, textX, textY);
-
-                    var fontSizeSub = (height / 200).toFixed(2);
-                    ctx.font = fontSizeSub + "em sans-serif";
-                    ctx.fillStyle = "#64748b";
-                    var textSub = "Saved",
-                        textSubX = Math.round((width - ctx.measureText(textSub).width) / 2),
-                        textSubY = height / 2 + 20;
-                    ctx.fillText(textSub, textSubX, textSubY);
-                    ctx.save();
-                }
-            }]
+            options: { responsive: true, maintainAspectRatio: false, cutout: '75%', plugins: commonPlugins }
         });
 
-        // ---------------------------------------------------------
-        // CHART 3: CAPABILITY RADAR (Radar Chart)
-        // ---------------------------------------------------------
-        const radarCtx = document.getElementById('capabilityRadarChart').getContext('2d');
-        new Chart(radarCtx, {
+        // CHART 3: Radar
+        new Chart(document.getElementById('capabilityRadarChart').getContext('2d'), {
             type: 'radar',
             data: {
-                labels: [
-                    wrapLabel('Inbound Support'),
-                    wrapLabel('Outbound Sales'),
-                    wrapLabel('Lead Qualification'),
-                    wrapLabel('Data Accuracy'),
-                    wrapLabel('Scalability')
-                ],
+                labels: ['Inbound', 'Outbound', 'Qualification', 'Accuracy', 'Scalability'],
                 datasets: [{
-                    label: 'AI Agent Capabilities',
+                    label: 'Agent Performance',
                     data: [95, 85, 90, 99, 100],
-                    fill: true,
-                    backgroundColor: 'rgba(6, 182, 212, 0.2)', // Cyan transparent
+                    backgroundColor: 'rgba(6, 182, 212, 0.2)',
                     borderColor: '#06b6d4',
-                    pointBackgroundColor: '#1e3a8a',
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: '#06b6d4'
+                    pointBackgroundColor: '#1e3a8a'
                 }]
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: commonPlugins,
-                scales: {
-                    r: {
-                        angleLines: { color: '#e2e8f0' },
-                        grid: { color: '#e2e8f0' },
-                        pointLabels: {
-                            font: { size: 12, family: 'Inter' },
-                            color: '#475569'
-                        },
-                        suggestedMin: 0,
-                        suggestedMax: 100,
-                        ticks: { display: false } // Hide numbers on axis for cleaner look
-                    }
-                }
-            }
+            options: { responsive: true, maintainAspectRatio: false, plugins: commonPlugins }
         });
 
-        // ---------------------------------------------------------
-        // CHART 4: RELIABILITY GAUGE (Plotly.js)
-        // ---------------------------------------------------------
-        var gaugeData = [
+        // CHART 4: Gauge
+        Plotly.newPlot('reliabilityGauge', [
             {
-                type: "indicator",
-                mode: "gauge+number",
-                value: 70, // Set to 70%
-                title: { text: "Uptime Guarantee (%)", font: { size: 16, color: "#475569", family: "Inter" } },
-                number: { suffix: "%", font: { size: 40, color: "#1e3a8a", weight: 800 } },
+                type: "indicator", mode: "gauge+number", value: 99.9,
+                number: { suffix: "%", font: { color: "#1e3a8a" } },
                 gauge: {
-                    axis: { range: [null, 100], tickwidth: 1, tickcolor: "#1e3a8a" },
-                    bar: { color: "#f59e0b" }, // Amber/Yellow
-                    bgcolor: "white",
-                    borderwidth: 2,
-                    bordercolor: "#e2e8f0",
-                    steps: [
-                        { range: [0, 60], color: "#fee2e2" },
-                        { range: [60, 80], color: "#fef3c7" },
-                        { range: [80, 100], color: "#dcfce7" }
-                    ],
+                    axis: { range: [null, 100] },
+                    bar: { color: "#f59e0b" },
+                    steps: [{ range: [0, 100], color: "#f1f5f9" }]
                 }
             }
-        ];
-
-        var gaugeLayout = {
-            width: 300,
-            height: 250,
-            margin: { t: 40, r: 25, l: 25, b: 25 },
+        ], { 
+            margin: { t: 0, b: 0, l: 30, r: 30 }, 
             paper_bgcolor: "rgba(0,0,0,0)",
-            font: { family: "Inter" }
-        };
+            height: 250
+        }, { responsive: true, displayModeBar: false });
 
-        const config = { responsive: true, displayModeBar: false };
-        Plotly.newPlot('reliabilityGauge', gaugeData, gaugeLayout, config);
-
-
-        // ---------------------------------------------------------
-        // PRICING BUTTON TOGGLE LOGIC
-        // ---------------------------------------------------------
+        // Pricing Toggle
         document.getElementById('showPricingButton').addEventListener('click', function() {
-            var pricingDetails = document.getElementById('pricingDetails');
-            var button = this;
-
-            if (pricingDetails.classList.contains('hidden')) {
-                pricingDetails.classList.remove('hidden');
-                pricingDetails.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                button.textContent = "Hide Detailed Pricing";
-            } else {
-                pricingDetails.classList.add('hidden');
-                button.textContent = "View Detailed Pricing";
-            }
+            const el = document.getElementById('pricingDetails');
+            el.classList.toggle('hidden');
+            this.textContent = el.classList.contains('hidden') ? "View Detailed Pricing" : "Hide Detailed Pricing";
         });
     </script>
 </body>
