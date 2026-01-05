@@ -47,6 +47,11 @@
             filter: grayscale(0%) opacity(1);
             transform: scale(1.1);
         }
+
+        .verdict-badge {
+            font-family: monospace;
+            letter-spacing: 0.1em;
+        }
     </style>
 </head>
 <body class="selection:bg-cyan-500/30">
@@ -61,8 +66,8 @@
                 <a href="#home" class="hover:text-white transition">Home</a>
                 <a href="#services" class="hover:text-white transition">Services</a>
             </div>
-            <a href="tel:+27609069958" class="bg-white text-slate-950 px-5 py-2 rounded-full text-xs font-bold hover:bg-cyan-400 transition transform hover:scale-105">
-                Contact
+            <a href="mailto:info@magmat.xyz" class="bg-white text-slate-950 px-5 py-2 rounded-full text-xs font-bold hover:bg-cyan-400 transition transform hover:scale-105">
+                Contact Us
             </a>
         </div>
     </nav>
@@ -93,7 +98,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                 
-                <a href="#ai-agent-details" class="glass-highlight p-8 rounded-2xl group transition hover:bg-cyan-500/10 cursor-pointer block">
+                <a href="#ai-agent-details" class="glass p-8 rounded-2xl group transition hover:bg-cyan-500/10 cursor-pointer block hover:border-cyan-500/30 border border-white/5">
                     <div class="flex justify-between items-start mb-6">
                         <div class="text-4xl">📞</div>
                         <div class="bg-cyan-500/20 text-cyan-300 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Active</div>
@@ -107,17 +112,19 @@
                     </div>
                 </a>
 
-                <div class="glass p-8 rounded-2xl group hover:border-white/20 transition">
+                <a href="#metascan-details" class="glass-highlight p-8 rounded-2xl group transition hover:bg-cyan-500/10 cursor-pointer block">
                     <div class="flex justify-between items-start mb-6">
                         <div class="text-4xl">🛡️</div>
                         <div class="bg-cyan-500/20 text-cyan-300 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Active</div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3 text-white">Metascanner</h3>
+                    <h3 class="text-2xl font-bold mb-3 text-white">MetaScan</h3>
                     <p class="text-slate-400 text-sm mb-6 leading-relaxed">
-                        Probability-based AI detection infrastructure. Identify synthetic text patterns in academic and professional submissions.
+                        Local metadata forensics. Trust your eyes less, trust your data more.
                     </p>
-                    <div class="text-slate-500 text-sm">Deploying via API</div>
-                </div>
+                    <div class="text-cyan-400 font-bold text-sm flex items-center gap-2 group-hover:gap-4 transition-all">
+                        Launch Details <span>→</span>
+                    </div>
+                </a>
             </div>
 
             <div class="border-t border-white/10 pt-8">
@@ -137,7 +144,7 @@
 
         <div id="ai-agent-details" class="scroll-mt-24 pt-12 border-t border-cyan-500/30">
             <div class="mb-10">
-                <div class="text-cyan-500 font-bold tracking-widest uppercase text-xs mb-2">Deep Dive</div>
+                <div class="text-cyan-500 font-bold tracking-widest uppercase text-xs mb-2">Voice Infrastructure</div>
                 <h2 class="text-3xl md:text-4xl font-800 text-white">Call Agent Performance Data</h2>
                 <p class="text-slate-500 mt-2">Real-world metrics from our deployed voice agents.</p>
             </div>
@@ -173,14 +180,83 @@
                 </div>
             </div>
 
-            <div class="mt-16 text-center">
-                <div class="inline-block glass p-10 rounded-[2rem] border-t-2 border-cyan-500/50">
-                    <h3 class="text-xl font-bold mb-4 text-white">Standard Deployment</h3>
-                    <div class="text-4xl font-800 text-cyan-400 mb-2">$869 <span class="text-lg text-slate-500 font-normal">setup</span></div>
-                    <p class="text-slate-400 mb-8 text-sm">+ $125/mo licensing & maintenance</p>
-                    <a href="mailto:info@magmat.xyz" class="bg-white text-slate-950 px-8 py-3 rounded-full font-bold hover:bg-cyan-400 transition">
-                        Start Integration
-                    </a>
+            <div class="mt-8 text-center">
+                <div class="inline-block glass p-8 rounded-[2rem] border-t border-cyan-500/30">
+                    <div class="text-sm text-slate-400 uppercase tracking-wide mb-2">Agent Pricing</div>
+                    <div class="text-3xl font-800 text-white">$869 <span class="text-sm font-normal text-slate-500">setup</span> + $125<span class="text-sm font-normal text-slate-500">/mo</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="metascan-details" class="scroll-mt-24 pt-24 border-t border-white/5">
+            <div class="max-w-4xl mx-auto text-center mb-16">
+                <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1 mb-6">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    <span class="text-xs font-bold text-slate-300 uppercase tracking-widest">MetaScan v1.1.0</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-800 text-white mb-6">Trust Your Eyes Less.<br><span class="text-cyan-400">Trust Your Data More.</span></h2>
+                <p class="text-lg text-slate-400 leading-relaxed">
+                    In a world flooded with AI-generated content and deepfakes, seeing is no longer believing. MetaScan is your first line of defense against digital deception.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="glass p-8 rounded-2xl border-t-2 border-green-500">
+                    <h3 class="text-xl font-bold mb-3 text-white">Zero-Risk Privacy</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Competitors upload your sensitive contracts to the cloud. MetaScan processes 100% of your data <strong>locally on your device</strong>. Your secrets stay yours.
+                    </p>
+                </div>
+                <div class="glass p-8 rounded-2xl border-t-2 border-cyan-500">
+                    <h3 class="text-xl font-bold mb-3 text-white">AI Detection</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Identifies patterns and signatures left behind by major AI generators (Midjourney, DALL-E, Stable Diffusion) in milliseconds.
+                    </p>
+                </div>
+                <div class="glass p-8 rounded-2xl border-t-2 border-amber-500">
+                    <h3 class="text-xl font-bold mb-3 text-white">Smart Verdicts</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        We don't give you confusing code; we give you a clear <span class="text-green-400 font-bold">Authentic</span> or <span class="text-red-400 font-bold">AI-Generated</span> verdict.
+                    </p>
+                </div>
+            </div>
+
+            <div class="glass rounded-3xl p-8 md:p-12 flex flex-col md:flex-row gap-12 items-center">
+                <div class="flex-1">
+                    <h3 class="text-2xl font-bold text-white mb-4">How it Works</h3>
+                    <p class="text-slate-400 mb-6 leading-relaxed">
+                        Think of a digital file like a physical letter in an envelope. Most people just read the letter (the image). MetaScan reads the <strong>envelope</strong> (metadata).
+                    </p>
+                    <p class="text-slate-400 leading-relaxed">
+                        It acts like a digital X-ray, showing you the history of the file—whether it was taken by a real camera or generated by an AI server farm—without the file ever leaving your computer.
+                    </p>
+                </div>
+                
+                <div class="w-full md:w-1/3 bg-black/40 rounded-xl p-6 border border-white/10 font-mono text-sm">
+                    <div class="flex justify-between border-b border-white/10 pb-2 mb-4">
+                        <span class="text-slate-500">SCAN_ID: #8821X</span>
+                        <span class="text-green-500">● ONLINE</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">File Integrity:</span>
+                            <span class="text-white">100%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">Camera Telemetry:</span>
+                            <span class="text-green-400">FOUND</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">AI Signatures:</span>
+                            <span class="text-slate-600">NONE</span>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-white/10 text-center">
+                            <div class="text-xs text-slate-500 uppercase mb-1">Final Verdict</div>
+                            <div class="verdict-badge bg-green-500/20 text-green-400 py-2 rounded border border-green-500/50 font-bold">
+                                AUTHENTIC
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
