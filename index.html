@@ -28,12 +28,6 @@
             border: 1px solid rgba(34, 211, 238, 0.2);
         }
 
-        .chart-container {
-            position: relative;
-            width: 100%;
-            height: 280px;
-        }
-
         /* Modern Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #020617; }
@@ -51,6 +45,20 @@
         .verdict-badge {
             font-family: monospace;
             letter-spacing: 0.1em;
+        }
+
+        /* Animation for Dropdown */
+        .details-section {
+            transition: all 0.5s ease-in-out;
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+        }
+        .details-section.active {
+            max-height: 2000px; /* Large enough to fit content */
+            opacity: 1;
+            padding-top: 3rem;
+            padding-bottom: 3rem;
         }
     </style>
 </head>
@@ -82,14 +90,13 @@
             <p class="text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
                 We design and build purpose-built tools to solve operational problems that existing solutions handle poorly.
             </p>
-            
             <a href="#services" class="inline-block bg-cyan-500 text-slate-950 font-bold py-4 px-10 rounded-lg shadow-[0_0_40px_-10px_rgba(6,182,212,0.5)] hover:bg-cyan-400 transition">
                 View Tools
             </a>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto p-4 md:p-8 space-y-32">
+    <main class="max-w-6xl mx-auto p-4 md:p-8 space-y-12">
 
         <section id="services">
             <div class="flex items-end mb-12 border-b border-white/10 pb-4">
@@ -98,21 +105,21 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                 
-                <a href="#ai-agent-details" class="glass p-8 rounded-2xl group transition hover:bg-cyan-500/10 cursor-pointer block hover:border-cyan-500/30 border border-white/5">
+                <div onclick="toggleSection('ai-agent-details')" class="glass p-8 rounded-2xl group transition hover:bg-cyan-500/10 cursor-pointer border border-white/5 hover:border-cyan-500/50">
                     <div class="flex justify-between items-start mb-6">
                         <div class="text-4xl">📞</div>
                         <div class="bg-cyan-500/20 text-cyan-300 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Active</div>
                     </div>
                     <h3 class="text-2xl font-bold mb-3 text-white">AI Call Agent Setup</h3>
                     <p class="text-slate-400 text-sm mb-6 leading-relaxed">
-                        End-to-end voice infrastructure setup. We replace rigid IVR systems with fluid, conversational intelligence.
+                        End-to-end voice infrastructure setup. Replace rigid IVR systems with fluid, conversational intelligence.
                     </p>
                     <div class="text-cyan-400 font-bold text-sm flex items-center gap-2 group-hover:gap-4 transition-all">
-                        View Performance Metrics <span>→</span>
+                        Click to Expand <span class="group-hover:rotate-90 transition transform">→</span>
                     </div>
-                </a>
+                </div>
 
-                <a href="#metascan-details" class="glass-highlight p-8 rounded-2xl group transition hover:bg-cyan-500/10 cursor-pointer block">
+                <div onclick="toggleSection('metascan-details')" class="glass-highlight p-8 rounded-2xl group transition hover:bg-cyan-500/10 cursor-pointer border border-cyan-500/20 hover:border-cyan-500/50">
                     <div class="flex justify-between items-start mb-6">
                         <div class="text-4xl">🛡️</div>
                         <div class="bg-cyan-500/20 text-cyan-300 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Active</div>
@@ -122,27 +129,13 @@
                         Local metadata forensics. Trust your eyes less, trust your data more.
                     </p>
                     <div class="text-cyan-400 font-bold text-sm flex items-center gap-2 group-hover:gap-4 transition-all">
-                        Launch Details <span>→</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="border-t border-white/10 pt-8">
-                <p class="text-xs text-slate-600 uppercase tracking-widest font-bold mb-6">In Development Pipeline</p>
-                <div class="flex gap-8 md:gap-16">
-                    <div class="pipeline-icon text-center group">
-                        <div class="text-3xl mb-2">🔒</div>
-                        <div class="text-[10px] text-slate-500 opacity-0 group-hover:opacity-100 transition">Email Security</div>
-                    </div>
-                    <div class="pipeline-icon text-center group">
-                        <div class="text-3xl mb-2">⚡</div>
-                        <div class="text-[10px] text-slate-500 opacity-0 group-hover:opacity-100 transition">Search Opt.</div>
+                        Click to Expand <span class="group-hover:rotate-90 transition transform">→</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div id="ai-agent-details" class="scroll-mt-24 pt-12 border-t border-cyan-500/30">
+        <div id="ai-agent-details" class="details-section border-t border-cyan-500/30">
             <div class="mb-10">
                 <div class="text-cyan-500 font-bold tracking-widest uppercase text-xs mb-2">Voice Infrastructure</div>
                 <h2 class="text-3xl md:text-4xl font-800 text-white">Call Agent Performance Data</h2>
@@ -154,7 +147,7 @@
                     <h3 class="text-sm font-bold text-slate-300 mb-6 flex items-center gap-2">
                         <span class="w-2 h-2 bg-cyan-500 rounded-full"></span> Annual Cost Efficiency
                     </h3>
-                    <div class="chart-container"><canvas id="costComparisonChart"></canvas></div>
+                    <div style="height: 250px;"><canvas id="costComparisonChart"></canvas></div>
                 </div>
 
                 <div class="space-y-6">
@@ -188,7 +181,7 @@
             </div>
         </div>
 
-        <div id="metascan-details" class="scroll-mt-24 pt-24 border-t border-white/5">
+        <div id="metascan-details" class="details-section border-t border-white/5">
             <div class="max-w-4xl mx-auto text-center mb-16">
                 <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1 mb-6">
                     <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
@@ -204,13 +197,13 @@
                 <div class="glass p-8 rounded-2xl border-t-2 border-green-500">
                     <h3 class="text-xl font-bold mb-3 text-white">Zero-Risk Privacy</h3>
                     <p class="text-slate-400 text-sm leading-relaxed">
-                        Competitors upload your sensitive contracts to the cloud. MetaScan processes 100% of your data <strong>locally on your device</strong>. Your secrets stay yours.
+                        Competitors upload your sensitive contracts to the cloud. MetaScan processes 100% of your data <strong>locally on your device</strong>.
                     </p>
                 </div>
                 <div class="glass p-8 rounded-2xl border-t-2 border-cyan-500">
                     <h3 class="text-xl font-bold mb-3 text-white">AI Detection</h3>
                     <p class="text-slate-400 text-sm leading-relaxed">
-                        Identifies patterns and signatures left behind by major AI generators (Midjourney, DALL-E, Stable Diffusion) in milliseconds.
+                        Identifies patterns and signatures left behind by major AI generators (Midjourney, DALL-E, Stable Diffusion).
                     </p>
                 </div>
                 <div class="glass p-8 rounded-2xl border-t-2 border-amber-500">
@@ -228,10 +221,9 @@
                         Think of a digital file like a physical letter in an envelope. Most people just read the letter (the image). MetaScan reads the <strong>envelope</strong> (metadata).
                     </p>
                     <p class="text-slate-400 leading-relaxed">
-                        It acts like a digital X-ray, showing you the history of the file—whether it was taken by a real camera or generated by an AI server farm—without the file ever leaving your computer.
+                        It acts like a digital X-ray, showing you the history of the file—whether it was taken by a real camera or generated by an AI server farm.
                     </p>
                 </div>
-                
                 <div class="w-full md:w-1/3 bg-black/40 rounded-xl p-6 border border-white/10 font-mono text-sm">
                     <div class="flex justify-between border-b border-white/10 pb-2 mb-4">
                         <span class="text-slate-500">SCAN_ID: #8821X</span>
@@ -246,12 +238,7 @@
                             <span class="text-slate-400">Camera Telemetry:</span>
                             <span class="text-green-400">FOUND</span>
                         </div>
-                        <div class="flex justify-between">
-                            <span class="text-slate-400">AI Signatures:</span>
-                            <span class="text-slate-600">NONE</span>
-                        </div>
                         <div class="mt-4 pt-4 border-t border-white/10 text-center">
-                            <div class="text-xs text-slate-500 uppercase mb-1">Final Verdict</div>
                             <div class="verdict-badge bg-green-500/20 text-green-400 py-2 rounded border border-green-500/50 font-bold">
                                 AUTHENTIC
                             </div>
@@ -261,10 +248,23 @@
             </div>
         </div>
 
+        <div class="border-t border-white/10 pt-8 pb-24">
+            <p class="text-xs text-slate-600 uppercase tracking-widest font-bold mb-6">In Development Pipeline</p>
+            <div class="flex gap-8 md:gap-16">
+                <div class="pipeline-icon text-center group">
+                    <div class="text-3xl mb-2">🔒</div>
+                    <div class="text-[10px] text-slate-500 opacity-0 group-hover:opacity-100 transition">Email Security</div>
+                </div>
+                <div class="pipeline-icon text-center group">
+                    <div class="text-3xl mb-2">⚡</div>
+                    <div class="text-[10px] text-slate-500 opacity-0 group-hover:opacity-100 transition">Search Opt.</div>
+                </div>
+            </div>
+        </div>
+
         <footer class="pt-20 pb-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="text-sm text-slate-600">© 2026 MAGMAT.XYZ</div>
             <div class="flex gap-6 text-xs font-bold text-slate-500 uppercase tracking-widest">
-                <a href="tel:+27609069958" class="hover:text-cyan-400 transition">+27 60 906 9958</a>
                 <a href="mailto:info@magmat.xyz" class="hover:text-cyan-400 transition">info@magmat.xyz</a>
             </div>
         </footer>
@@ -272,7 +272,34 @@
     </main>
 
     <script>
-        // Chart Config
+        // TOGGLE FUNCTION
+        function toggleSection(sectionId) {
+            // Get both sections
+            const aiSection = document.getElementById('ai-agent-details');
+            const metaSection = document.getElementById('metascan-details');
+            
+            // Determine which section was clicked
+            const targetSection = document.getElementById(sectionId);
+
+            // If the clicked section is already open, close it.
+            if (targetSection.classList.contains('active')) {
+                targetSection.classList.remove('active');
+            } else {
+                // Otherwise, close ALL sections first (Accordion style)
+                aiSection.classList.remove('active');
+                metaSection.classList.remove('active');
+                
+                // Then open the clicked one
+                targetSection.classList.add('active');
+
+                // Smooth scroll to the section
+                setTimeout(() => {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 300);
+            }
+        }
+
+        // CHART CONFIG
         Chart.defaults.color = '#64748b';
         Chart.defaults.font.family = "'Inter', sans-serif";
 
