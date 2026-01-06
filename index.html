@@ -7,6 +7,8 @@
 
     <script src="https://cdn.tailwindcss.com/"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
 
     <style>
@@ -55,7 +57,7 @@
             opacity: 0;
         }
         .details-section.active {
-            max-height: 2000px; /* Large enough to fit content */
+            max-height: 2500px; /* Increased height to fit pricing */
             opacity: 1;
             padding-top: 3rem;
             padding-bottom: 3rem;
@@ -175,8 +177,14 @@
 
             <div class="mt-8 text-center">
                 <div class="inline-block glass p-8 rounded-[2rem] border-t border-cyan-500/30">
-                    <div class="text-sm text-slate-400 uppercase tracking-wide mb-2">Agent Pricing</div>
+                    <div class="text-sm text-slate-400 uppercase tracking-wide mb-2">Enterprise Setup</div>
                     <div class="text-3xl font-800 text-white">$869 <span class="text-sm font-normal text-slate-500">setup</span> + $125<span class="text-sm font-normal text-slate-500">/mo</span></div>
+                    <div class="mt-6">
+                        <a href="mailto:info@magmat.xyz?subject=AI%20Call%20Agent%20Integration" class="bg-white text-slate-950 px-8 py-3 rounded-full font-bold hover:bg-cyan-400 transition">
+                            Request Implementation
+                        </a>
+                        <p class="text-xs text-slate-500 mt-3">Invoice-based billing available</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -211,6 +219,50 @@
                     <p class="text-slate-400 text-sm leading-relaxed">
                         We don't give you confusing code; we give you a clear <span class="text-green-400 font-bold">Authentic</span> or <span class="text-red-400 font-bold">AI-Generated</span> verdict.
                     </p>
+                </div>
+            </div>
+
+            <div class="max-w-3xl mx-auto mb-16">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="glass p-8 rounded-3xl border border-white/5 text-center flex flex-col justify-between hover:border-white/20 transition">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-300 mb-2">Monthly Flex</h3>
+                            <div class="text-4xl font-800 text-white mb-2">$9.99</div>
+                            <div class="text-xs text-slate-500 mb-6 uppercase tracking-wide">Billed Monthly</div>
+                            <ul class="text-sm text-slate-400 space-y-3 mb-8 text-left pl-4">
+                                <li class="flex items-center gap-2">✓ Always Updated</li>
+                                <li class="flex items-center gap-2">✓ Cancel Anytime</li>
+                            </ul>
+                        </div>
+                        <button onclick="alert('Store activation in progress. Check back in 24 hours!')" class="block w-full bg-white/10 text-white font-bold py-3 rounded-xl hover:bg-white/20 transition flex items-center justify-center gap-2">
+                            Subscribe
+                        </button>
+                    </div>
+
+                    <div class="glass p-8 rounded-3xl border-2 border-green-500/40 text-center flex flex-col justify-between relative overflow-hidden bg-green-500/5">
+                        <div class="absolute top-0 right-0 bg-green-500 text-black text-[10px] font-bold px-3 py-1 rounded-bl-xl">BEST VALUE</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Lifetime License</h3>
+                            <div class="text-4xl font-800 text-green-400 mb-2">$49</div>
+                            <div class="text-xs text-slate-500 mb-6 uppercase tracking-wide">Single Version</div>
+                            <ul class="text-sm text-slate-300 space-y-3 mb-8 text-left pl-4">
+                                <li class="flex items-center gap-2 text-white font-semibold">✓ Own v1.0 Forever</li>
+                                <li class="flex items-center gap-2">✓ No Recurring Fees</li>
+                                <li class="flex items-center gap-2">✓ Instant Key Generation</li>
+                            </ul>
+                        </div>
+                        <button onclick="alert('Store activation in progress. Check back in 24 hours!')" class="block w-full bg-[#0070ba] text-white font-bold py-3 rounded-xl hover:bg-[#005ea6] transition flex items-center justify-center gap-2 shadow-lg shadow-blue-900/20">
+                            Buy Version 1.0
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass rounded-xl p-6 border border-white/10 max-w-2xl mx-auto mb-16 text-center">
+                <div class="text-xs text-slate-500 uppercase tracking-widest mb-2">Security Verification</div>
+                <p class="text-sm text-slate-400 mb-4">Verify your download integrity (SHA-256)</p>
+                <div class="bg-black/50 p-3 rounded-lg font-mono text-[10px] md:text-xs text-slate-500 break-all border border-white/5 select-all">
+                    e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
                 </div>
             </div>
 
