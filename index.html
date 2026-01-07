@@ -57,7 +57,7 @@
             opacity: 0;
         }
         .details-section.active {
-            max-height: 2500px; /* Increased height to fit pricing */
+            max-height: 2500px;
             opacity: 1;
             padding-top: 3rem;
             padding-bottom: 3rem;
@@ -107,17 +107,17 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                 
-                <div onclick="toggleSection('ai-agent-details')" class="glass p-8 rounded-2xl group transition hover:bg-cyan-500/10 cursor-pointer border border-white/5 hover:border-cyan-500/50">
+                <div class="glass p-8 rounded-2xl border border-white/5 opacity-80">
                     <div class="flex justify-between items-start mb-6">
                         <div class="text-4xl">📞</div>
-                        <div class="bg-cyan-500/20 text-cyan-300 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Active</div>
+                        <div class="bg-cyan-500/10 text-cyan-500/50 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Active</div>
                     </div>
                     <h3 class="text-2xl font-bold mb-3 text-white">AI Call Agent Setup</h3>
                     <p class="text-slate-400 text-sm mb-6 leading-relaxed">
                         End-to-end voice infrastructure setup. Replace rigid IVR systems with fluid, conversational intelligence.
                     </p>
-                    <div class="text-cyan-400 font-bold text-sm flex items-center gap-2 group-hover:gap-4 transition-all">
-                        Click to Expand <span class="group-hover:rotate-90 transition transform">→</span>
+                    <div class="text-slate-600 text-sm font-bold flex items-center gap-2">
+                        Enterprise Access Only
                     </div>
                 </div>
 
@@ -136,58 +136,6 @@
                 </div>
             </div>
         </section>
-
-        <div id="ai-agent-details" class="details-section border-t border-cyan-500/30">
-            <div class="mb-10">
-                <div class="text-cyan-500 font-bold tracking-widest uppercase text-xs mb-2">Voice Infrastructure</div>
-                <h2 class="text-3xl md:text-4xl font-800 text-white">Call Agent Performance Data</h2>
-                <p class="text-slate-500 mt-2">Real-world metrics from our deployed voice agents.</p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="glass p-8 rounded-3xl">
-                    <h3 class="text-sm font-bold text-slate-300 mb-6 flex items-center gap-2">
-                        <span class="w-2 h-2 bg-cyan-500 rounded-full"></span> Annual Cost Efficiency
-                    </h3>
-                    <div style="height: 250px;"><canvas id="costComparisonChart"></canvas></div>
-                </div>
-
-                <div class="space-y-6">
-                    <div class="glass p-8 rounded-3xl h-full flex flex-col justify-center">
-                         <h3 class="text-sm font-bold text-slate-300 mb-6 flex items-center gap-2">
-                            <span class="w-2 h-2 bg-amber-500 rounded-full"></span> Operational Reliability
-                        </h3>
-                        <div class="grid grid-cols-2 gap-4 text-center">
-                            <div class="p-4 bg-white/5 rounded-xl border border-white/5">
-                                <div class="text-3xl font-800 text-cyan-400">99.9%</div>
-                                <div class="text-[10px] text-slate-500 uppercase mt-1">Uptime</div>
-                            </div>
-                            <div class="p-4 bg-white/5 rounded-xl border border-white/5">
-                                <div class="text-3xl font-800 text-amber-500">24/7</div>
-                                <div class="text-[10px] text-slate-500 uppercase mt-1">Availability</div>
-                            </div>
-                            <div class="col-span-2 p-4 bg-white/5 rounded-xl border border-white/5">
-                                <div class="text-3xl font-800 text-white">Zero</div>
-                                <div class="text-[10px] text-slate-500 uppercase mt-1">Human Overhead</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-8 text-center">
-                <div class="inline-block glass p-8 rounded-[2rem] border-t border-cyan-500/30">
-                    <div class="text-sm text-slate-400 uppercase tracking-wide mb-2">Enterprise Setup</div>
-                    <div class="text-3xl font-800 text-white">$869 <span class="text-sm font-normal text-slate-500">setup</span> + $125<span class="text-sm font-normal text-slate-500">/mo</span></div>
-                    <div class="mt-6">
-                        <a href="mailto:info@magmat.xyz?subject=AI%20Call%20Agent%20Integration" class="bg-white text-slate-950 px-8 py-3 rounded-full font-bold hover:bg-cyan-400 transition">
-                            Request Implementation
-                        </a>
-                        <p class="text-xs text-slate-500 mt-3">Invoice-based billing available</p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div id="metascan-details" class="details-section border-t border-white/5">
             <div class="max-w-4xl mx-auto text-center mb-16">
@@ -324,59 +272,32 @@
     </main>
 
     <script>
-        // TOGGLE FUNCTION
+        // UPDATED TOGGLE FUNCTION (Robust against deleted sections)
         function toggleSection(sectionId) {
-            // Get both sections
-            const aiSection = document.getElementById('ai-agent-details');
-            const metaSection = document.getElementById('metascan-details');
-            
-            // Determine which section was clicked
+            // Find the target section
             const targetSection = document.getElementById(sectionId);
+            if (!targetSection) return; // Guard clause in case element is missing
 
-            // If the clicked section is already open, close it.
+            // Close ANY open details sections
+            document.querySelectorAll('.details-section').forEach(el => {
+                // If it's not the one we just clicked, close it
+                if (el.id !== sectionId) {
+                    el.classList.remove('active');
+                }
+            });
+
+            // Toggle the target
             if (targetSection.classList.contains('active')) {
                 targetSection.classList.remove('active');
             } else {
-                // Otherwise, close ALL sections first (Accordion style)
-                aiSection.classList.remove('active');
-                metaSection.classList.remove('active');
-                
-                // Then open the clicked one
                 targetSection.classList.add('active');
-
-                // Smooth scroll to the section
+                
+                // Smooth scroll
                 setTimeout(() => {
                     targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }, 300);
             }
         }
-
-        // CHART CONFIG
-        Chart.defaults.color = '#64748b';
-        Chart.defaults.font.family = "'Inter', sans-serif";
-
-        new Chart(document.getElementById('costComparisonChart').getContext('2d'), {
-            type: 'bar',
-            data: {
-                labels: ['Human Agency', 'Magmat AI'],
-                datasets: [{
-                    label: 'Year 1 Cost (USD)',
-                    data: [12000, 2369],
-                    backgroundColor: ['rgba(148, 163, 184, 0.2)', '#06b6d4'],
-                    borderRadius: 8,
-                    barThickness: 50
-                }]
-            },
-            options: { 
-                responsive: true, 
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                    y: { grid: { color: 'rgba(255,255,255,0.05)' }, border: { display: false } },
-                    x: { grid: { display: false }, border: { display: false } }
-                }
-            }
-        });
     </script>
 </body>
 </html>
