@@ -4,7 +4,7 @@
                 controls 
                 poster="assets/video-thumbnail.jpg"
                 preload="metadata">
-                <source src="assets/video-2-prod.mp4" type="video/mp4">
+                <source src="assets/video 2 prod.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <div class="p-4 text-left">
