@@ -1,2 +1,12 @@
-# student
-AI Call Agent Student Consultant Infographic
+<div class="mt-12 mb-16 glass p-2 rounded-2xl border border-white/10 overflow-hidden max-w-3xl mx-auto shadow-2xl">
+    <video 
+        class="w-full rounded-xl" 
+        controls 
+        preload="metadata">
+        <source src="assets/video%202%20prod.mp4" type="video/mp4">
+        
+    </video>
+    <div class="p-4 text-left">
+        <p class="text-xs font-mono text-cyan-500 uppercase tracking-tighter">Live Demo: Detecting R4000.90 balance manipulation</p>
+    </div>
+</div>
